@@ -1,0 +1,28 @@
+h2 {
+  padding-top: 5px;
+  border-bottom: 1px solid black;
+  margin-left: 5px;
+  margin-right: 5px;
+
+}
+
+.counter {
+  float: right;
+  font-style: italic;
+  font-size: medium;
+
+}
+
+textarea {
+  width: 100%;
+  padding-left: 0.25em;
+  word-wrap: break-word;
+
+}
+
+.new-tweet {
+  background-color: gainsboro;
+  border-radius: 10px;
+  padding: .75em;
+  margin: 0 2em;
+}
