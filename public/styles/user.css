@@ -1,4 +1,9 @@
 #tweet-list {
+  list-style: none;
+  padding: 0;
+}
+
+.tweet {
   margin-top: 10px;
   margin: 2em;
   border: 1px solid #666;
@@ -6,7 +11,7 @@
 
 }
 
-#tweet-list:hover {
+.tweet:hover {
   box-shadow: .5px .5px 50px grey;
   transition: .2s ease-in-out;
 
@@ -27,7 +32,7 @@
 
 }
 
-#tweet-list .user {
+.tweet .user {
   float:right;
   margin-right: 10px;
   font-size: x-small;
@@ -55,7 +60,7 @@
 }
 
 
-article.tweet:hover .icons {
+.tweet-message:hover .icons {
   opacity: 1;
 }
 
