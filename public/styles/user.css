@@ -1,0 +1,72 @@
+#tweet-list {
+  margin-top: 10px;
+  margin: 2em;
+  border: 1px solid #666;
+  border-radius: 5px
+
+}
+
+#tweet-list:hover {
+  box-shadow: .5px .5px 50px grey;
+  transition: .2s ease-in-out;
+
+}
+
+.tweet-header {
+  background-color: gainsboro;
+  border-radius: 5px 5px 0 0;
+  padding-top: 8px;
+}
+
+.tweet-footer {
+  border-top: 1px solid black;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  font-size: small;
+
+}
+
+#tweet-list .user {
+  float:right;
+  margin-right: 10px;
+  font-size: x-small;
+}
+
+.photo {
+
+  padding-left: 10px;
+  padding-bottom: 10px;
+
+}
+
+.name {
+  vertical-align: top;
+  margin-top: 5px;
+  margin-left: 5px;
+  margin-bottom: 5px;
+}
+
+.text {
+  font-size: medium;
+  padding-top: 10px;
+  padding-left: 10px;
+  padding-bottom: 10px;
+}
+
+
+article.tweet:hover .icons {
+  opacity: 1;
+}
+
+.icons {
+  color: grey;
+  float:right;
+  padding-right: 10px;
+  opacity: .5;
+}
+
+.icons:hover {
+  color: orange;
+  opacity: 1;
+}

@@ -31,3 +31,9 @@ textarea {
   padding: .75em;
   margin: 0 2em;
 }
+
+.new-tweet:hover {
+box-shadow: .5px .5px 50px grey;
+transition: .2s ease-in-out;
+
+}
