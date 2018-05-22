@@ -103,19 +103,30 @@ function renderTweets(tweetsArray) {
     })
 }
 
+function loadTweets () {
+  $('#tweet-list').html("");
+  $.ajax({
+    url: "/tweets",
+    type: 'GET',
+    success: function (data) {
+      renderTweets(data)
+    }
+  })
+}
 
 
 $(document).ready(function () {
-  renderTweets(data)
-  console.log( $( this ).serialize())
+  loadTweets()
   $('form').submit(function (event) {
+    console.log( $( this ).serialize())
     event.preventDefault();
     $.ajax({
       url: '/tweets',
       method: 'POST',
       data: $(this).serialize(),
       success: function () {
-        console.log('Good');
+        loadTweets()
+
       }
     })
   })
