@@ -1,49 +1,4 @@
-const data = [
-  {
-    "user": {
-      "name": "Newton",
-      "avatars": {
-        "small":   "https://vanillicon.com/788e533873e80d2002fa14e1412b4188_50.png",
-        "regular": "https://vanillicon.com/788e533873e80d2002fa14e1412b4188.png",
-        "large":   "https://vanillicon.com/788e533873e80d2002fa14e1412b4188_200.png"
-      },
-      "handle": "@SirIsaac"
-    },
-    "content": {
-      "text": "If I have seen further it is by standing on the shoulders of giants"
-    },
-    "created_at": 1461116232227
-  },
-  {
-    "user": {
-      "name": "Descartes",
-      "avatars": {
-        "small":   "https://vanillicon.com/7b89b0d8280b93e2ba68841436c0bebc_50.png",
-        "regular": "https://vanillicon.com/7b89b0d8280b93e2ba68841436c0bebc.png",
-        "large":   "https://vanillicon.com/7b89b0d8280b93e2ba68841436c0bebc_200.png"
-      },
-      "handle": "@rd" },
-    "content": {
-      "text": "Je pense , donc je suis"
-    },
-    "created_at": 1461113959088
-  },
-  {
-    "user": {
-      "name": "Johann von Goethe",
-      "avatars": {
-        "small":   "https://vanillicon.com/d55cf8e18b47d4baaf60c006a0de39e1_50.png",
-        "regular": "https://vanillicon.com/d55cf8e18b47d4baaf60c006a0de39e1.png",
-        "large":   "https://vanillicon.com/d55cf8e18b47d4baaf60c006a0de39e1_200.png"
-      },
-      "handle": "@johann49"
-    },
-    "content": {
-      "text": "Es ist nichts schrecklicher als eine tätige Unwissenheit."
-    },
-    "created_at": 1461113796368
-  }
-]
+
 
 function createTweetElement (tweetData) {
   const $tweet = $('<li>')
@@ -73,12 +28,12 @@ function createTweetElement (tweetData) {
     .text(tweetData.content.text)
     .appendTo($tweet);
 
-  const $footer = $('<footer>')
+  let $footer = $('<footer>')
     .addClass('tweet-footer')
-    .text(tweetData.created_at)
+    .text(newTime(tweetData.created_at))
     .appendTo($tweet)
 
-  const $span = $('<span>')
+  let $span = $('<span>')
     .addClass('icons')
     .appendTo($footer)
 
@@ -97,9 +52,31 @@ function createTweetElement (tweetData) {
   return $tweet;
 }
 
+function newTime(timestamp) {
+  var currentTime = Date.now()
+  var postTime = timestamp
+  var realTime = currentTime - postTime
+  Math.floor(realTime / 1000 / 60 / 60 / 24 / 365)
+  if(Math.floor(realTime / 1000 / 60 / 60 / 24 / 365 ) > 0) {
+    return Math.floor(realTime / 1000 / 60 / 60 / 24 / 365 ) + " years ago"
+  } else if (Math.floor(realTime / 1000 / 60 /  60 / 24 / 30.416666) > 0) {
+    return Math.floor(realTime / 1000 / 60 /  60 / 24 / 30.416666) + " months ago"
+  } else if (Math.floor(realTime / 1000 / 60 /  60 / 24 ) > 0) {
+    return Math.floor(realTime / 1000 / 60 /  60 / 24) + " days ago"
+  } else if (Math.floor(realTime / 1000 / 60 /  60 ) > 0) {
+    return Math.floor(realTime / 1000 / 60 /  60) + " hours ago"
+  } else if(Math.floor(realTime / 1000 / 60) > 0) {
+    return Math.floor(realTime / 1000 / 60) + " minutes ago"
+  } else if (Math.floor(realTime / 1000) > 0) {
+    return Math.floor(realTime / 1000) + " seconds ago"
+  } else {
+    return "0 seconds ago"
+  }
+}
+
 function renderTweets(tweetsArray) {
   tweetsArray.forEach(function (tweetObj) {
-    $('#tweet-list').append(createTweetElement(tweetObj));
+    $('#tweet-list').prepend(createTweetElement(tweetObj));
     })
 }
 
@@ -114,9 +91,10 @@ function loadTweets () {
   })
 }
 
-$(document).ready(function (){
+$(document).ready(function () {
+  $(".new-tweet").hide()
 $('button').click(function () {
-  $('.new-tweet').toggle('slow')
+  $('.new-tweet').toggle('fast')
   $('textarea').focus();
   })
 })

@@ -3,6 +3,9 @@
   background-color: #00a087;
   color: #e8fdff;
   padding: 0em 2em 0em 2em;
+  font-family: 'Lobster';
+  /* position: fixed;
+  width: 100%; */
 }
 
 #nav-bar img {
@@ -28,6 +31,5 @@
   margin-top: 10px;
   border-radius: 25px;
   font-family: 'Lobster', cursive;
-
 
 }
