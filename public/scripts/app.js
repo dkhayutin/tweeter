@@ -114,20 +114,33 @@ function loadTweets () {
   })
 }
 
+$(document).ready(function (){
+$('button').click(function () {
+  $('.new-tweet').toggle('slow')
+  $('textarea').focus();
+  })
+})
 
 $(document).ready(function () {
   loadTweets()
   $('form').submit(function (event) {
-    console.log( $( this ).serialize())
     event.preventDefault();
-    $.ajax({
-      url: '/tweets',
-      method: 'POST',
-      data: $(this).serialize(),
-      success: function () {
-        loadTweets()
-
-      }
-    })
+    let textField = $('form textarea')
+    if(textField.val().length > 140) {
+      $('.counter').text('Woops! Your tweet is to long!')
+    } else if(textField.val().length <= 0) {
+      $('.counter').text('Make sure you enter a tweet!')
+    } else {
+      $.ajax({
+        url: '/tweets',
+        method: 'POST',
+        data: $(this).serialize(),
+        success: function () {
+          loadTweets()
+        }
+      })
+      $('.counter').text(140)
+      $('textarea').val('')
+    }
   })
 });
