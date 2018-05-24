@@ -30,6 +30,7 @@ textarea {
   border-radius: 10px;
   padding: .75em;
   margin: 0 2em;
+  margin-top: 20px;
 }
 
 .new-tweet:hover {

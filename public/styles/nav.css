@@ -4,21 +4,23 @@
   color: #e8fdff;
   padding: 0em 2em 0em 2em;
   font-family: 'Lobster';
-  /* position: fixed;
-  width: 100%; */
+  position: fixed;
+  width: 100%;
 }
 
 #nav-bar img {
   height: 80px;
   width: 80px;
-  float: left
+  float: left;
+  padding-top: 10px;
+  padding-bottom: 10px;
 
 }
 
 #nav-bar .header{
   line-height: 2;
   float: left;
-  margin-left: 10px;
+  margin-left: 5px;
   font-size: 40px;
 
 }

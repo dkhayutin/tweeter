@@ -1,4 +1,49 @@
-
+const data = {
+  '1a2b3c': {
+    "user": {
+      "name": "Newton",
+      "avatars": {
+        "small":   "https://vanillicon.com/788e533873e80d2002fa14e1412b4188_50.png",
+        "regular": "https://vanillicon.com/788e533873e80d2002fa14e1412b4188.png",
+        "large":   "https://vanillicon.com/788e533873e80d2002fa14e1412b4188_200.png"
+      },
+      "handle": "@SirIsaac"
+    },
+    "content": {
+      "text": "If I have seen further it is by standing on the shoulders of giants"
+    },
+    "created_at": 1461116232227
+  },
+  '4f5i6g': {
+    "user": {
+      "name": "Descartes",
+      "avatars": {
+        "small":   "https://vanillicon.com/7b89b0d8280b93e2ba68841436c0bebc_50.png",
+        "regular": "https://vanillicon.com/7b89b0d8280b93e2ba68841436c0bebc.png",
+        "large":   "https://vanillicon.com/7b89b0d8280b93e2ba68841436c0bebc_200.png"
+      },
+      "handle": "@rd" },
+    "content": {
+      "text": "Je pense , donc je suis"
+    },
+    "created_at": 1461113959088
+  },
+  '7q8r9s': {
+    "user": {
+      "name": "Johann von Goethe",
+      "avatars": {
+        "small":   "https://vanillicon.com/d55cf8e18b47d4baaf60c006a0de39e1_50.png",
+        "regular": "https://vanillicon.com/d55cf8e18b47d4baaf60c006a0de39e1.png",
+        "large":   "https://vanillicon.com/d55cf8e18b47d4baaf60c006a0de39e1_200.png"
+      },
+      "handle": "@johann49"
+    },
+    "content": {
+      "text": "Es ist nichts schrecklicher als eine tätige Unwissenheit."
+    },
+    "created_at": 1461113796368
+  }
+};
 
 function createTweetElement (tweetData) {
   const $tweet = $('<li>')
@@ -46,7 +91,9 @@ function createTweetElement (tweetData) {
     .appendTo($span)
 
   $('<i>')
-    .addClass('far fa-heart')
+    .attr('data-tweet', tweetData._id )
+    .attr('title', tweetData.likes)
+    .addClass(`far fa-heart ${tweetData.likes > 0 ? 'redText' : ''}`)
     .appendTo($span)
 
   return $tweet;
@@ -74,10 +121,10 @@ function newTime(timestamp) {
   }
 }
 
-function renderTweets(tweetsArray) {
-  tweetsArray.forEach(function (tweetObj) {
-    $('#tweet-list').prepend(createTweetElement(tweetObj));
-    })
+function renderTweets(tweetsObject) {
+    for(tweet in tweetsObject) {
+      $('#tweet-list').prepend(createTweetElement(tweetsObject[tweet]));
+    }
 }
 
 function loadTweets () {
@@ -92,15 +139,9 @@ function loadTweets () {
 }
 
 $(document).ready(function () {
-  $(".new-tweet").hide()
-$('button').click(function () {
-  $('.new-tweet').toggle('fast')
-  $('textarea').focus();
-  })
-})
 
-$(document).ready(function () {
-  loadTweets()
+  loadTweets();
+
   $('form').submit(function (event) {
     event.preventDefault();
     let textField = $('form textarea')
@@ -121,4 +162,23 @@ $(document).ready(function () {
       $('textarea').val('')
     }
   })
+
+  $(".new-tweet").hide();
+  $('button').click(function () {
+    $('.new-tweet').toggle('fast')
+    $('textarea').focus();
+  });
+
+  $('body').on('click', '.fa-heart', function () {
+    var id = $(this).attr('data-tweet')
+      var url = '/tweets/' + id + '/like';
+      $.ajax({
+        url: url,
+        type: 'post',
+        success: () => {
+          $(this).addClass('redText')
+        }
+      })
+  });
+
 });
