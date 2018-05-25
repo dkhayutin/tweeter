@@ -9,13 +9,13 @@ const PORT          = 8080;
 const express       = require("express");
 const bodyParser    = require("body-parser");
 const app           = express();
-const MONGODB_URL   = process.env.MONGODB_URI || 'mongodb://localhost:27017/tweeter'
+const MONGODB_URI   = process.env.MONGODB_URI
 
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
-MongoClient.connect(MONGODB_URL, (err, db) => {
+MongoClient.connect(MONGODB_URI, (err, db) => {
   if (err) throw new Error('Failed to Connect to MongoDB!')
 
 // The in-memory database of tweets. It's a basic object with an array in it.
