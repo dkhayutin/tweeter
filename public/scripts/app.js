@@ -175,8 +175,9 @@ $(document).ready(function () {
       $.ajax({
         url: url,
         type: 'post',
-        success: () => {
+        success: (tweet) => {
           $(this).addClass('redText')
+          $(this).attr('title', tweet.likes)
         }
       })
   });

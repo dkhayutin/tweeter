@@ -56,7 +56,7 @@ module.exports = function(DataHelpers) {
       } else  {
         tweet.likes += 1;
         DataHelpers.updateTweet(req.params.id, tweet,  (err, tweet) => {
-          res.send();
+          res.send(tweet);
 
         })
       }
