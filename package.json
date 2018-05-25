@@ -5,7 +5,7 @@
   "main": "server/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server/index.js",
+    "start": "npm run local",
     "local": "./node_modules/.bin/nodemon --watch server -e js server/index.js"
   },
   "author": "Lighthouse Labs",
@@ -13,11 +13,16 @@
   "dependencies": {
     "body-parser": "^1.18.3",
     "chance": "^1.0.16",
+    "dotenv": "^5.0.1",
     "express": "^4.16.3",
     "md5": "^2.2.1",
     "mongodb": "^2.2.35"
   },
   "devDependencies": {
+    "body-parser": "^1.15.2",
+    "chance": "^1.0.2",
+    "express": "^4.13.4",
+    "md5": "^2.1.0",
     "nodemon": "^1.9.2"
   }
 }
