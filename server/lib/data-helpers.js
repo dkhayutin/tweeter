@@ -29,8 +29,8 @@ module.exports = function makeDataHelpers(db) {
     },
 
     updateTweet: function (id, tweet, callback) {
-      db.collection('tweets').updateOne({_id:Mongo.ObjectID(id)}, tweet, (err, tweet) => {
-        callback(err, tweet)
+      db.collection('tweets').updateOne({_id:Mongo.ObjectID(id)}, tweet, (err, res) => {
+        callback(err, res)
       })
     }
   };

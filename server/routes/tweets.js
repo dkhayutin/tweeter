@@ -55,9 +55,8 @@ module.exports = function(DataHelpers) {
         res.status(500).json({ error: err.message });
       } else  {
         tweet.likes += 1;
-        DataHelpers.updateTweet(req.params.id, tweet,  (err, tweet) => {
+        DataHelpers.updateTweet(req.params.id, tweet,  (err, res) => {
           res.send(tweet);
-
         })
       }
     });
