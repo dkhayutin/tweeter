@@ -17,7 +17,7 @@ app.use(express.static("public"));
 
 MongoClient.connect(MONGODB_URI, (err, db) => {
   if (err) {
-    console.log(err);
+    console.log(err, MONGODB_URI);
     throw new Error('Failed to Connect to MongoDB!')
   }
 
