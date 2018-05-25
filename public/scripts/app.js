@@ -117,7 +117,7 @@ function newTime(timestamp) {
   } else if (Math.floor(realTime / 1000) > 0) {
     return Math.floor(realTime / 1000) + " seconds ago"
   } else {
-    return "0 seconds ago"
+    return "Just now"
   }
 }
 
