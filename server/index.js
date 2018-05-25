@@ -16,7 +16,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
 MongoClient.connect(MONGODB_URI, (err, db) => {
-  if (err) throw new Error('Failed to Connect to MongoDB!')
+  if (err) {
+    console.log(err);
+    throw new Error('Failed to Connect to MongoDB!')
+  }
 
 // The in-memory database of tweets. It's a basic object with an array in it.
 //const db = require("./lib/in-memory-db");
