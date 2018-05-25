@@ -62,8 +62,6 @@ module.exports = function(DataHelpers) {
     });
   })
 
-  //put /:id/like
-
   return tweetsRoutes;
 
 }
