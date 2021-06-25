@@ -1,4 +1,10 @@
 # Node.js
+- task: OWASPDependencyCheck@0
+  inputs:
+    outputDirectory: '$(Agent.TempDirectory)/dependency-scan-results'
+    scanDirectory: '$(Build.SourcesDirectory)'
+    outputFormat: 'ALL'
+    useSonarQubeIntegration: true
 # Build a general Node.js project with npm.
 # Add steps that analyze code, save build artifacts, deploy, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
